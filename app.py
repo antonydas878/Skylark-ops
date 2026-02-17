@@ -132,6 +132,8 @@ if candidates:
         st.write(f"- Pilot {alt['pilot']} • Drone {alt['drone']} • Est. cost ₹{alt['cost']} • Notes: {alt['risk']}")
 else:
     st.warning("No suitable assignment found under current constraints.")
+# Sort candidates by lowest cost first (tie-breaker: pilot name)
+candidates = sorted(candidates, key=lambda x: (x["cost"], x["pilot"]))
 
 # ---------- Impact Preview ----------
 st.subheader("Impact preview")
